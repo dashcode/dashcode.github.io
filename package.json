@@ -1,0 +1,23 @@
+{
+  "name": "fortune-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "build": "webpack -p",
+    "watch": "webpack --watch",
+    "devtool": "webpack -w --devtool source-map",
+    "start": "webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
+  },
+  "dependencies": {
+    "@tweenjs/tween.js": "^17.1.1",
+    "pixi.js": "^4.6.2"
+  }
+}
