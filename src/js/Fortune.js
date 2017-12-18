@@ -56,12 +56,14 @@ export default class Fortune {
         this.startButton.disabled = true;
         this.rotateWithAcceleration = new TWEEN.Tween(this.wheel)
             .to({rotation: "+6.28"}, 6000)
+            .onUpdate(this.resetRotation.bind(this))
             .easing(TWEEN.Easing.Quadratic.In);
         
         this.rotateForever = new TWEEN.Tween(this.wheel)
             .to({rotation: "+6.28"}, 3000)
             .repeat(Infinity)
-            .onStart(function() {this.stopButton.disabled = false;}.bind(this));
+            .onStart(function() {this.stopButton.disabled = false;}.bind(this))
+            .onUpdate(this.resetRotation.bind(this));
 
         this.rotateWithAcceleration.chain(this.rotateForever);
         this.rotateWithAcceleration.start();
@@ -73,13 +75,21 @@ export default class Fortune {
         .to({rotation: "+6.28"}, 6000)
         .easing(TWEEN.Easing.Quadratic.Out)
         .onStart(function() {this.stopButton.disabled = true;}.bind(this))
-        .onComplete(function() {this.startButton.disabled = false; }.bind(this))
+        .onComplete(function() {this.startButton.disabled = false;}.bind(this))
+        .onUpdate(this.resetRotation.bind(this))
         .start();
     }
 
     animate() {
         requestAnimationFrame(this.animate.bind(this));
+        console.log(this.wheel.rotation)
         TWEEN.update();
+    }
+
+    resetRotation() {
+        while (this.wheel.rotation >= Math.PI * 2) {
+            this.wheel.rotation -= Math.PI * 2;
+        }
     }
 
     resize() {
