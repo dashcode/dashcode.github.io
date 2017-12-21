@@ -29,12 +29,12 @@ export default class Button extends PIXI.Sprite {
 
         this.fontStyle = {
             fontFamily: 'Arial',
-            fontSize: this.height / 2,
+            fontSize: 48,
             fontWeight: 'bold',
             fill: '#000000'
         };
 
-        this.setLabel(this.textString, this.fontStyle)
+        this.setLabel(this.textString, this.fontStyle);
     }
 
     setLabel(textString, fontStyle) {
@@ -70,12 +70,14 @@ export default class Button extends PIXI.Sprite {
             this.interactive = false;
             this.buttonMode = false;
             this.alpha = 0.2;
+            this.tint = 0xFF0000;
         } else {
             this.texture = this.buttonUpTexture;
             this.interactive = true;
             this.buttonMode = true;
             this.isDisabled = false;
             this.alpha = 1;
+            this.tint = 0xFFFFFF;
         }
 
     }

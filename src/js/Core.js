@@ -28,10 +28,6 @@ export default class Core {
         return this._app.stage;
     }
 
-    get ticker() {
-        return this._app.ticker();
-    }
-
     get view() {
         return this._app.view;
     }

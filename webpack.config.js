@@ -4,7 +4,7 @@ module.exports = {
   devtool: 'source-map',
   entry: './src/app.js',
   output: {
-    filename: './dist/build.js',
+    filename: './build.js',
     path: path.resolve(__dirname, 'dist')
   },
   devServer: {
